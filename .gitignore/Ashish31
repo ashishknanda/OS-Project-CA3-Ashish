@@ -1,0 +1,59 @@
+#include<stdio.h>
+#include<time.h>
+#include<string.h>
+#include<stdlib.h>
+int main()
+{
+    int nOfP, root,timeQuant,totalTime=0,avgTime;
+    int student[100];
+    char Name[20];
+    time_t timer;
+    char buff[26];
+    struct tm* tm_info;
+    time(&timer);
+    tm_info = localtime(&timer);
+
+    strftime(buff, 26, "%Y-%m-%d %H:%M:%S", tm_info);
+    puts(buff);
+	
+	if(tm_info->tm_hour >=2&& tm_info->tm_hour <=24)
+	{
+		printf("The time you have logged in is ");
+    	printf("\nAre you LINUX Expert?\nEnter 1 if YES and 0 for NO::\n");
+    	scanf("%d", &root);
+    	if(root==1)
+    	{
+    		printf("\nEnter Your Name :");
+    		scanf("%s", &Name);
+    	    printf("\nWelcome %s", Name);
+    	    printf("\nYour time is from 10 to 12 AM");
+    	    printf("\nEnter no of students:");
+    	    scanf("%d",&nOfP);
+    	    printf("\nEnter the time Quantum:");
+    	    scanf("%d", &timeQuant);
+    	    for(int i=0; i<nOfP; i++)
+    	    {
+    	        student[i] = i+1;
+    	    }
+    	    for(int i=1, j=0; i<=120, j<nOfP; i=i+timeQuant, j++)
+    	    {
+    	        printf("\nThe query of the Student Having ID:%d At Start Time : %d And End Time : %d\n",student[j],i,i+timeQuant);
+    	        totalTime = totalTime + timeQuant;
+    	    }
+    	    avgTime = (totalTime/nOfP);
+    	    printf("--------------------------------------------------------------\n");
+           printf("--------------------------------------------------------------\n");
+           printf("___________________THE FINAL SUMMARY OF THE SESSION__________________\n");
+    	    printf("\nThe total Time Used in Handling queries By:%s is %d",Name, totalTime);
+    	    printf("\nThe Average Time Of The Session is : %d\n", avgTime);
+    	}
+    	else
+    	{
+    	    printf("\nYou are Not Authorized For LogIn .");
+    	}
+   	}
+	else
+	{
+		printf("This Is Not The Right Time");
+	}
+}	
